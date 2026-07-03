@@ -9,6 +9,14 @@ import habilidadesImg from "@/assets/ch-habilidades.png";
 import contextoImg from "@/assets/ch-contexto.png";
 import acaoImg from "@/assets/ch-acao.png";
 
+const CHAPTER_IMAGES: Record<string, string> = {
+  "CÉREBRO": cerebroImg,
+  "CONHECIMENTO": conhecimentoImg,
+  "HABILIDADES": habilidadesImg,
+  "CONTEXTO": contextoImg,
+  "AÇÃO": acaoImg,
+};
+
 export const Route = createFileRoute("/")({
   component: Presentation,
 });
@@ -26,11 +34,18 @@ function SlideShell({
   align?: "left" | "center";
   padded?: boolean;
 }) {
+  const chapterImg = chapter ? CHAPTER_IMAGES[chapter] : null;
+
   return (
     <div className="slide-content">
       {chapter && (
-        <div className="slide-chapter-tag absolute" style={{ top: 60, left: 110 }}>
-          CAPÍTULO {chapter}
+        <div
+          className="slide-chapter-tag absolute flex items-center gap-4"
+          style={{ top: 60, left: 90 }}
+        >
+          {chapterImg && (
+            <img src={chapterImg} alt="" style={{ width: 80, height: 80, objectFit: "contain" }} />
+          )}
         </div>
       )}
       <div
@@ -135,7 +150,7 @@ const SLIDES: Slide[] = [
             do <Underline>Cérebro</Underline> à <Underline>Ação</Underline>.
           </div>
           <div className="slide-statement mt-14" style={{ maxWidth: 1400, color: "#333" }}>
-            Entendendo modelos, dominando ferramentas e criando soluções com contexto.
+            Ferramentas mudam. Os conceitos permanecem. É essa base que te prepara para evoluir
           </div>
         </div>
       </div>
@@ -168,14 +183,14 @@ const SLIDES: Slide[] = [
           style={{ gridTemplateColumns: "repeat(5, 1fr)", marginTop: 40 }}
         >
           {[
-            { n: "01", t: "Cérebro" },
-            { n: "02", t: "Conhecimento" },
-            { n: "03", t: "Habilidades" },
-            { n: "04", t: "Contexto" },
-            { n: "05", t: "Ação" },
+            { n: "01", t: "Cérebro", i: cerebroImg },
+            { n: "02", t: "Conhecimento", i: conhecimentoImg },
+            { n: "03", t: "Habilidades", i: habilidadesImg },
+            { n: "04", t: "Contexto", i: contextoImg },
+            { n: "05", t: "Ação", i: acaoImg },
           ].map((c, i) => (
-            <div key={c.n} className="flex flex-col" style={{ borderTop: `6px solid ${i === 0 ? "#ff6b00" : "#111"}`, paddingTop: 24 }}>
-              <div className="slide-label" style={{ color: "#111" }}>{c.n}</div>
+            <div key={c.n} className="flex flex-col items-center justify-center">
+              <img src={c.i} alt={c.t} style={{ width: 240, height: 240, objectFit: "contain" }} />
               <div style={{ fontSize: 42, fontWeight: 700, marginTop: 12 }}>{c.t}</div>
             </div>
           ))}
@@ -184,7 +199,7 @@ const SLIDES: Slide[] = [
     ),
   },
   // 4 — Cover Cérebro
-  { id: 4, render: () => <ChapterCover num="01" name="Cérebro" image={cerebroImg} range="Slides 5–9" /> },
+  { id: 4, render: () => <ChapterCover num="01" name="Cérebro" image={cerebroImg} range="" /> },
   // 5 — Evolução timeline
   {
     id: 5,
@@ -209,7 +224,7 @@ const SLIDES: Slide[] = [
                     width: 28,
                     height: 28,
                     borderRadius: 999,
-                    background: i === 3 ? "#ff6b00" : "#111",
+                    background: '#ff6b00',
                     marginBottom: 30,
                   }}
                 />
@@ -234,7 +249,7 @@ const SLIDES: Slide[] = [
           O que são <Underline>LLMs</Underline>?
         </div>
         <div className="slide-statement mb-16" style={{ maxWidth: 1400, color: "#333" }}>
-          Large Language Models — modelos treinados em enormes volumes de texto para prever a próxima palavra e, com isso, conversar, escrever e raciocinar.
+          Large Language Models são modelos treinados em enormes volumes de texto para prever a próxima palavra, permitindo conversar, escrever e raciocinar.
         </div>
         <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
           <Card num="Texto" title="LLMs" body="Chat, resumo, redação e análise." />
@@ -255,10 +270,10 @@ const SLIDES: Slide[] = [
         </div>
         <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
           {[
-            { b: "OpenAI", m: "GPT-5 / GPT-4o" },
-            { b: "Anthropic", m: "Claude Sonnet 4.5" },
-            { b: "Google", m: "Gemini 2.5 / 3" },
-            { b: "Open source", m: "Llama · Mistral · DeepSeek" },
+            { b: "OpenAI", m: "GPT-5.4 / GPT-4o" },
+            { b: "Anthropic", m: "Claude Sonnet 4.6" },
+            { b: "Google", m: "Gemini 3.1 PRO" },
+            { b: "Open source", m: "Llama · DeepSeek v4" },
           ].map((x) => (
             <div key={x.b} style={{ borderLeft: "4px solid #ff6b00", paddingLeft: 24 }}>
               <div className="slide-label" style={{ color: "#111" }}>{x.b}</div>
@@ -279,17 +294,17 @@ const SLIDES: Slide[] = [
           <Underline>Tokens</Underline> e limitações.
         </div>
         <div className="slide-statement mb-14" style={{ maxWidth: 1500, color: "#333" }}>
-          Tudo que entra e sai do modelo é medido em tokens — pedaços de palavras. Cada modelo tem uma "janela" máxima do que consegue lembrar de uma vez.
+          Tudo que entra e sai do modelo é medido em tokens. Cada modelo tem uma "janela" máxima do que consegue lembrar de uma vez.
         </div>
         <div className="grid gap-10" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
           <div>
-            <div className="slide-num text-accent">~4</div>
+            <div className="slide-num text-accent">~5</div>
             <div className="slide-body" style={{ color: "#444", marginTop: 10 }}>
-              caracteres por token, em média (português).
+              caracteres equivale 1 token (português).
             </div>
           </div>
           <div>
-            <div className="slide-num text-accent">128k</div>
+            <div className="slide-num text-accent">200k</div>
             <div className="slide-body" style={{ color: "#444", marginTop: 10 }}>
               tokens de contexto em modelos usuais.
             </div>
@@ -313,15 +328,13 @@ const SLIDES: Slide[] = [
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
           <Underline>Custos</Underline> por token.
         </div>
-        <div className="slide-statement mb-14" style={{ maxWidth: 1500, color: "#333" }}>
-          Cobra-se por milhão de tokens — entrada e saída são precificadas separadamente.
-        </div>
         <div className="grid gap-10 items-end" style={{ gridTemplateColumns: "repeat(4, 1fr)", height: 380 }}>
           {[
             { m: "Modelo econômico", h: 60, p: "US$ 0,15 / 1M" },
-            { m: "Modelo padrão", h: 120, p: "US$ 2,50 / 1M" },
-            { m: "Modelo avançado", h: 220, p: "US$ 10 / 1M" },
-            { m: "Modelo de raciocínio", h: 340, p: "US$ 60 / 1M" },
+            { m: "Modelo para uso geral", h: 120, p: "US$ 1,50 / 1M" },
+            { m: "Modelo para planejar", h: 220, p: "US$ 2,50 / 1M" },
+            { m: "Modelo mais avançado", h: 340, p: "US$ 10 / 1M" },
+            
           ].map((b, i) => (
             <div key={b.m} className="flex flex-col items-start h-full justify-end">
               <div
@@ -336,14 +349,11 @@ const SLIDES: Slide[] = [
             </div>
           ))}
         </div>
-        <div className="slide-caption" style={{ marginTop: 24 }}>
-          Valores ilustrativos. Modelos maiores e "pensantes" custam mais por resposta.
-        </div>
       </SlideShell>
     ),
   },
   // 10 — Cover Conhecimento
-  { id: 10, render: () => <ChapterCover num="02" name="Conhecimento" image={conhecimentoImg} range="Slides 11–13" /> },
+  { id: 10, render: () => <ChapterCover num="02" name="Conhecimento" image={conhecimentoImg} range="" /> },
   // 11 — Projeto no ChatGPT
   {
     id: 11,
@@ -354,7 +364,7 @@ const SLIDES: Slide[] = [
           <Underline>Projetos</Underline> no ChatGPT.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Um espaço com instruções fixas, arquivos e histórico próprios — como criar um "colaborador" especialista para um tema recorrente da cooperativa.
+          Um agrupador de instruções fixas, arquivos e histórico próprios.
         </div>
       </SlideShell>
     ),
@@ -369,7 +379,7 @@ const SLIDES: Slide[] = [
           PDFs e vídeos no <Underline>NotebookLM</Underline>.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Suba manuais, atas, resoluções do BCB e vídeos. A IA responde citando exatamente o trecho de origem.
+          Suba manuais, atas, resoluções do Bacen e vídeos do YouTube. A IA responde citando exatamente o trecho de origem.
         </div>
       </SlideShell>
     ),
@@ -384,13 +394,13 @@ const SLIDES: Slide[] = [
           Arquivos <Underline>Markdown</Underline>.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Texto simples com estrutura clara — títulos, listas e tabelas. Leve, versionável e lido perfeitamente por qualquer modelo.
+          Texto simples com estrutura clar, como: títulos, listas e tabelas. Leve, versionável e lido perfeitamente por qualquer modelo.
         </div>
       </SlideShell>
     ),
   },
   // 14 — Cover Habilidades
-  { id: 14, render: () => <ChapterCover num="03" name="Habilidades" image={habilidadesImg} range="Slides 15–17" /> },
+  { id: 14, render: () => <ChapterCover num="03" name="Habilidades" image={habilidadesImg} range="" /> },
   // 15 — Assistentes web
   {
     id: 15,
@@ -426,7 +436,7 @@ const SLIDES: Slide[] = [
           ))}
         </div>
         <div className="slide-caption" style={{ marginTop: 30, maxWidth: 1400 }}>
-          Rodam localmente, leem seus arquivos e podem executar tarefas no sistema — potência de agente no seu dia a dia.
+          Rodam localmente, leem seus arquivos e podem executar tarefas no sistema.
         </div>
       </SlideShell>
     ),
@@ -471,7 +481,7 @@ const SLIDES: Slide[] = [
     ),
   },
   // 18 — Cover Contexto
-  { id: 18, render: () => <ChapterCover num="04" name="Contexto" image={contextoImg} range="Slides 19–25" /> },
+  { id: 18, render: () => <ChapterCover num="04" name="Contexto" image={contextoImg} range="" /> },
   // 19 — O que é contexto
   {
     id: 19,
@@ -482,7 +492,7 @@ const SLIDES: Slide[] = [
           O que é <Underline>contexto</Underline>?
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          É toda informação que a IA recebe para entender quem você é, o que você quer e como deve responder. Sem contexto, ela chuta. Com contexto, ela acerta.
+          São as definições que a IA recebe para entender quem você é, o que você quer e como deve responder. Sem contexto, ela chuta o que <Underline>faltou definir ou deixa genérico</Underline>.
         </div>
       </SlideShell>
     ),
@@ -496,15 +506,14 @@ const SLIDES: Slide[] = [
         <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
           A <Underline>anatomia</Underline> do contexto.
         </div>
-        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(5, 1fr)" }}>
+        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
           {[
-            { n: "01", t: "Papel", d: "Quem a IA deve ser." },
-            { n: "02", t: "Objetivo", d: "O que você quer alcançar." },
-            { n: "03", t: "Entrada", d: "Os dados ou o material." },
-            { n: "04", t: "Regras", d: "Restrições e formato." },
-            { n: "05", t: "Exemplo", d: "Como uma boa resposta se parece." },
+            { n: "01", t: "Personificação", d: "Quem a IA deve parecer ser." },
+            { n: "02", t: "Tarefa, Objetivo", d: "O que você quer alcançar." },
+            { n: "03", t: "Contexto em si", d: "Os dados, arquivos ou o material." },
+            { n: "04", t: "Regras, Formato", d: "Restrições e formato esperado." },
           ].map((x, i) => (
-            <div key={x.n} style={{ borderTop: `6px solid ${i === 2 ? "#ff6b00" : "#111"}`, paddingTop: 20 }}>
+            <div key={x.n} style={{ borderTop: `6px solid ${i === 2 ? "#ff6b00" : "#111"}`, paddingTop: 20, marginTop: 80 }}>
               <div className="slide-label" style={{ color: "#111" }}>{x.n}</div>
               <div style={{ fontSize: 34, fontWeight: 700, marginTop: 10 }}>{x.t}</div>
               <div className="slide-body" style={{ color: "#555", marginTop: 8 }}>{x.d}</div>
@@ -521,10 +530,7 @@ const SLIDES: Slide[] = [
       <SlideShell chapter="CONTEXTO" align="center">
         <Label>Pausa para reflexão</Label>
         <div className="slide-hero" style={{ maxWidth: 1600 }}>
-          Vamos fazer um <Underline>exercício falado</Underline>?
-        </div>
-        <div className="slide-statement" style={{ marginTop: 40, maxWidth: 1300, color: "#555" }}>
-          Descreva, em voz alta, uma tarefa da sua rotina para um "estagiário" que nunca trabalhou na cooperativa.
+          Vamos fazer um exercício <Underline>falado</Underline>?
         </div>
       </SlideShell>
     ),
@@ -534,9 +540,9 @@ const SLIDES: Slide[] = [
     id: 22,
     render: () => (
       <SlideShell chapter="CONTEXTO">
-        <Label>Exercício · Mão na massa · 1/4</Label>
+        <Label>Exercício 1/4 · Mão na massa</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
-          Comece pelo <Underline>contexto</Underline>.
+          O poder (e o limite) da <Underline>personificação</Underline>.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
           Escreva quem é você, em qual cooperativa trabalha, qual é o público atendido e qual tarefa quer resolver hoje.
@@ -549,7 +555,7 @@ const SLIDES: Slide[] = [
     id: 23,
     render: () => (
       <SlideShell chapter="CONTEXTO">
-        <Label>Exercício · Mão na massa · 2/4</Label>
+        <Label>Exercício 2/4 · Mão na massa</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
           Mostre um <Underline>exemplo</Underline>.
         </div>
@@ -564,7 +570,7 @@ const SLIDES: Slide[] = [
     id: 24,
     render: () => (
       <SlideShell chapter="CONTEXTO">
-        <Label>Exercício · Mão na massa · 3/4</Label>
+        <Label>Exercício 3/4 · Mão na massa</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
           Peça uma <Underline>cadeia de pensamento</Underline>.
         </div>
@@ -579,18 +585,18 @@ const SLIDES: Slide[] = [
     id: 25,
     render: () => (
       <SlideShell chapter="CONTEXTO">
-        <Label>Exercício · Mão na massa · 4/4</Label>
+        <Label>Exercício 4/4 · Mão na massa</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
           <Underline>Itere</Underline> a resposta.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Ninguém acerta de primeira — nem você, nem a IA. Reforce o que ficou bom, corrija o que ficou fraco e peça de novo.
+          Ninguém acerta de primeira (nem você, nem a IA). Reforce o que ficou bom, corrija o que ficou fraco e peça de novo.
         </div>
       </SlideShell>
     ),
   },
   // 26 — Cover Ação
-  { id: 26, render: () => <ChapterCover num="05" name="Ação" image={acaoImg} range="Slides 27–29" /> },
+  { id: 26, render: () => <ChapterCover num="05" name="Ação" image={acaoImg} range="" /> },
   // 27 — Skills
   {
     id: 27,
@@ -601,7 +607,7 @@ const SLIDES: Slide[] = [
           Habilidades <Underline>customizadas</Underline>.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Skills são procedimentos prontos que a IA aprende uma vez e executa sempre da mesma forma — para tarefas repetitivas da cooperativa.
+          Skills são procedimentos prontos que a IA aprende uma vez e executa sempre da mesma forma para tarefas repetitivas da cooperativa.
         </div>
       </SlideShell>
     ),
@@ -666,12 +672,9 @@ const SLIDES: Slide[] = [
     id: 31,
     render: () => (
       <div className="slide-content flex flex-col items-center justify-center gap-16">
-        <h1 className="slide-title-lg" style={{ fontWeight: 800 }}>Obrigado</h1>
-        <img
-          src={logoAsset.url}
-          alt="Logo Barracred"
-          style={{ width: 420, height: "auto", objectFit: "contain" }}
-        />
+        <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
+          Quanto <Underline>mais</Underline> praticarmos, <Underline>melhores</Underline> serão os resultados.
+        </div>
       </div>
     ),
   },
