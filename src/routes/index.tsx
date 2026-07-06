@@ -152,7 +152,7 @@ const SLIDES: Slide[] = [
         >
           <div className="slide-label mb-10">Formação Interna · Barracred</div>
           <div className="slide-hero" style={{ maxWidth: 1600 }}>
-            IA Generativa:<br />
+            Inteligência Artificial:<br />
             do <Underline>Cérebro</Underline> à <Underline>Ação</Underline>.
           </div>
           <div className="slide-statement mt-14" style={{ maxWidth: 1400, color: "#333" }}>
@@ -769,7 +769,7 @@ function Presentation() {
   }, [index, go]);
 
   useEffect(() => {
-    document.title = `${index + 1}/${SLIDES.length} · IA Generativa — Barracred`;
+    document.title = `${index + 1}/${SLIDES.length} · Inteligência Artificial — Barracred`;
   }, [index]);
 
   // Fit scale

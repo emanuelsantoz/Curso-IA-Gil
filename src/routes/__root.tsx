@@ -77,10 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "IA Generativa: Do Cérebro à Ação — Barracred" },
-      { name: "description", content: "Apresentação sobre IA Generativa para colaboradores da Barracred: modelos, ferramentas, contexto e ação." },
+      { title: "Inteligência Artificial: Do Cérebro à Ação — Barracred" },
+      { name: "description", content: "Apresentação sobre Inteligência Artificial para colaboradores da Barracred: modelos, ferramentas, contexto e ação." },
       { name: "author", content: "Barracred" },
-      { property: "og:title", content: "IA Generativa: Do Cérebro à Ação" },
+      { property: "og:title", content: "Inteligência Artificial: Do Cérebro à Ação" },
       { property: "og:description", content: "Entendendo modelos, dominando ferramentas e criando soluções com contexto." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
