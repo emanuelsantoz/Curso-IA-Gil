@@ -3,7 +3,6 @@ name: userstory
 description: Gera descrições de User Story seguindo o padrão definido.
 ---
 
-
 Sempre que for solicitado para gerar User Story, utilize exatamente este padrão. Exemplo:
 
 ## Título ##

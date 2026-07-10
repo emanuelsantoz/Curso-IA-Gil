@@ -1,4 +1,4 @@
----
+--- 
 name: consumo
 description: Gera informações de consumo de modelos de IA seguindo o padrão definido.
 ---

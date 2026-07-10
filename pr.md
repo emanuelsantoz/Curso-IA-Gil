@@ -3,7 +3,6 @@ name: pr
 description: Gera descrições de Pull Request seguindo o padrão definido.
 ---
 
-
 Sempre que for solicitado para gerar descrição de Pull Request, siga exatamente este estilo para descrever a alteração feita. Exemplo:
 
 ## Objetivo ##

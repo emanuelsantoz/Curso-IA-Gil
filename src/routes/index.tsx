@@ -12,8 +12,8 @@ import acaoImg from "@/assets/ch-acao.png";
 const CHAPTER_IMAGES: Record<string, string> = {
   "CÉREBRO": cerebroImg,
   "CONHECIMENTO": conhecimentoImg,
-  "HABILIDADES": habilidadesImg,
   "CONTEXTO": contextoImg,
+  "HABILIDADES": habilidadesImg,
   "AÇÃO": acaoImg,
 };
 
@@ -191,8 +191,8 @@ const SLIDES: Slide[] = [
           {[
             { n: "01", t: "Cérebro", i: cerebroImg },
             { n: "02", t: "Conhecimento", i: conhecimentoImg },
-            { n: "03", t: "Habilidades", i: habilidadesImg },
-            { n: "04", t: "Contexto", i: contextoImg },
+            { n: "03", t: "Contexto", i: contextoImg },
+            { n: "04", t: "Habilidades", i: habilidadesImg },
             { n: "05", t: "Ação", i: acaoImg },
           ].map((c, i) => (
             <div key={c.n} className="flex flex-col items-center justify-center">
@@ -336,7 +336,7 @@ const SLIDES: Slide[] = [
         </div>
         <div className="grid gap-10 items-end" style={{ gridTemplateColumns: "repeat(4, 1fr)", height: 380 }}>
           {[
-            { m: "Modelo econômico", h: 40, p: "US$ 0,3 + US$ 2,5 / 1M" },
+            { m: "Modelo econômico", h: 40, p: "US$ 0,30 + US$ 2,5 / 1M" },
             { m: "Modelo para uso geral", h: 60, p: "US$ 0,50 + US$ 3 / 1M" },
             { m: "Modelo para planejar", h: 140, p: "US$ 3 + US$ 15 / 1M" },
             { m: "Modelo mais avançado", h: 340, p: "US$ 10 + US$ 50 / 1M" },
@@ -360,9 +360,26 @@ const SLIDES: Slide[] = [
   },
   // 10 — Cover Conhecimento
   { id: 10, render: () => <ChapterCover num="02" name="Conhecimento" image={conhecimentoImg} range="" /> },
-  // 11 — Projeto no ChatGPT
+  // 11 — Assistentes web
   {
     id: 11,
+    render: () => (
+      <SlideShell chapter="CONHECIMENTO">
+        <Label>Onde conversamos com a IA</Label>
+        <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
+          <Underline>Assistentes web</Underline> por chat.
+        </div>
+        <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <Card num="OpenAI" title="ChatGPT" body="O mais conhecido. Forte em texto, imagem e voz." />
+          <Card num="Google" title="Gemini" body="Integrado ao Workspace, YouTube e Google Search." />
+          <Card num="Anthropic" title="Claude" body="Ótimo para textos longos e análise de documentos." />
+        </div>
+      </SlideShell>
+    ),
+  },
+  // 12 — Projeto no ChatGPT
+  {
+    id: 12,
     render: () => (
       <SlideShell chapter="CONHECIMENTO">
         <Label>Memória de trabalho</Label>
@@ -375,9 +392,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 12 — NotebookLM
+  // 13 — NotebookLM
   {
-    id: 12,
+    id: 13,
     render: () => (
       <SlideShell chapter="CONHECIMENTO">
         <Label>Base de fontes confiáveis</Label>
@@ -390,107 +407,26 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 13 — Markdown
+  // 14 — Markdown
   {
-    id: 13,
+    id: 14,
     render: () => (
       <SlideShell chapter="CONHECIMENTO">
         <Label>O formato preferido das IAs</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
-          Arquivos <Underline>Markdown</Underline>.
+          Arquivos de <Underline>instruções</Underline>.
         </div>
         <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Texto simples com estrutura clara com títulos, listas e tabelas. Leve, versionável e lido perfeitamente por qualquer modelo.
+          Com texto simples é possível especificar ou descrever experiências e processos que o modelo não conhece.
         </div>
       </SlideShell>
     ),
   },
-  // 14 — Cover Habilidades
-  { id: 14, render: () => <ChapterCover num="03" name="Habilidades" image={habilidadesImg} range="" /> },
-  // 15 — Assistentes web
-  {
-    id: 15,
-    render: () => (
-      <SlideShell chapter="HABILIDADES">
-        <Label>Onde conversamos com a IA</Label>
-        <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
-          Assistentes <Underline>web por chat</Underline>.
-        </div>
-        <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-          <Card num="OpenAI" title="ChatGPT" body="O mais conhecido. Forte em texto, imagem e voz." />
-          <Card num="Anthropic" title="Claude" body="Ótimo para textos longos e análise de documentos." />
-          <Card num="Google" title="Gemini" body="Integrado ao Workspace, YouTube e Google Search." />
-        </div>
-      </SlideShell>
-    ),
-  },
-  // 16 — Assistentes instalados
+  // 15 — Cover Contexto
+  { id: 15, render: () => <ChapterCover num="03" name="Contexto" image={contextoImg} range="" /> },
+  // 16 — O que é contexto
   {
     id: 16,
-    render: () => (
-      <SlideShell chapter="HABILIDADES">
-        <Label>IA dentro do seu computador</Label>
-        <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
-          Assistentes <Underline>instalados</Underline> na máquina.
-        </div>
-        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-          {["Codex", "Claude", "Trae", "Copilot"].map((n) => (
-            <div key={n} style={{ border: "2px solid #111", padding: "40px 32px", minHeight: 200 }}>
-              <div className="slide-label text-accent mb-4">Desktop</div>
-              <div style={{ fontSize: 44, fontWeight: 700 }}>{n}</div>
-            </div>
-          ))}
-        </div>
-        <div className="slide-caption" style={{ marginTop: 30, maxWidth: 1400 }}>
-          Rodam localmente, leem seus arquivos e podem executar tarefas no sistema.
-        </div>
-      </SlideShell>
-    ),
-  },
-  // 17 — Habilidades padrões
-  {
-    id: 17,
-    render: () => (
-      <SlideShell chapter="HABILIDADES">
-        <Label>O que a IA já sabe fazer</Label>
-        <div className="slide-title mb-12" style={{ maxWidth: 1500 }}>
-          Habilidades <Underline>padrões</Underline>.
-        </div>
-        <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-          {[
-            "Criar imagens",
-            "Pensamento profundo",
-            "Pesquisa na web",
-            "Criar músicas",
-            "Criar apresentações",
-            "Criar vídeos",
-            "Integrações",
-            "Plugins diversos",
-          ].map((h) => (
-            <div
-              key={h}
-              style={{
-                border: "2px solid #111",
-                padding: "26px 24px",
-                fontSize: 28,
-                fontWeight: 600,
-                minHeight: 110,
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {h}
-            </div>
-          ))}
-        </div>
-      </SlideShell>
-    ),
-  },
-  // 18 — Cover Contexto
-  { id: 18, render: () => <ChapterCover num="04" name="Contexto" image={contextoImg} range="" /> },
-  // 19 — O que é contexto
-  {
-    id: 19,
     render: () => (
       <SlideShell chapter="CONTEXTO">
         <Label>O ingrediente que muda tudo</Label>
@@ -503,9 +439,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 20 — Anatomia
+  // 17 — Anatomia
   {
-    id: 20,
+    id: 17,
     render: () => (
       <SlideShell chapter="CONTEXTO">
         <Label>Como se monta um bom prompt</Label>
@@ -529,9 +465,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 21 — Exercício falado
+  // 18 — Exercício falado
   {
-    id: 21,
+    id: 18,
     render: () => (
       <SlideShell chapter="CONTEXTO" align="center">
         <Label>Pausa para reflexão</Label>
@@ -541,9 +477,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 22 — Mão na massa: contexto
+  // 19 — Mão na massa: contexto
   {
-    id: 22,
+    id: 19,
     render: () => (
       <SlideShell chapter="CONTEXTO">
         <Label>Exercício 1/4 · Mão na massa</Label>
@@ -560,9 +496,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 23 — Mão na massa: exemplo
+  // 20 — Mão na massa: exemplo
   {
-    id: 23,
+    id: 20,
     render: () => (
       <SlideShell chapter="CONTEXTO">
         <Label>Exercício 2/4 · Mão na massa</Label>
@@ -580,9 +516,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 24 — Cadeia de pensamento
+  // 21 — Cadeia de pensamento
   {
-    id: 24,
+    id: 21,
     render: () => (
       <SlideShell chapter="CONTEXTO">
         <Label>Exercício 3/4 · Mão na massa</Label>
@@ -602,9 +538,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 25 — Iteração
+  // 22 — Iteração
   {
-    id: 25,
+    id: 22,
     render: () => (
       <SlideShell chapter="CONTEXTO">
         <Label>Exercício 4/4 · Mão na massa</Label>
@@ -621,13 +557,14 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 26 — Cover Ação
-  { id: 26, render: () => <ChapterCover num="05" name="Ação" image={acaoImg} range="" /> },
-  // 27 — Skills
+  // 23 — Cover Habilidades
+  { id: 23, render: () => <ChapterCover num="04" name="Habilidades" image={habilidadesImg} range="" /> },
+
+  // 24 — Skills
   {
-    id: 27,
+    id: 24,
     render: () => (
-      <SlideShell chapter="AÇÃO">
+      <SlideShell chapter="HABILIDADES">
         <Label>Do prompt à execução</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
           Habilidades <Underline>customizadas</Underline>.
@@ -638,11 +575,11 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 28 — Exemplos skills
+  // 25 — Exemplos skills
   {
-    id: 28,
+    id: 25,
     render: () => (
-      <SlideShell chapter="AÇÃO">
+      <SlideShell chapter="HABILIDADES">
         <Label>O que já é possível automatizar</Label>
         <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
           Exemplos de <Underline>skills</Underline>.
@@ -668,9 +605,12 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 29 — Juntando tudo
+  // 26 — Cover Ação
+  { id: 26, render: () => <ChapterCover num="05" name="Ação" image={acaoImg} range="" /> },
+
+  // 27 — Juntando tudo
   {
-    id: 29,
+    id: 27,
     render: () => (
       <SlideShell chapter="AÇÃO">
         <Label>Exercício final · Mão na massa</Label>
@@ -693,9 +633,9 @@ const SLIDES: Slide[] = [
       </SlideShell>
     ),
   },
-  // 30 — Encerramento meme
+  // 28 — Encerramento meme
   {
-    id: 30,
+    id: 28,
     render: () => (
       <div className="slide-content flex items-center justify-center">
         <img
@@ -706,9 +646,9 @@ const SLIDES: Slide[] = [
       </div>
     ),
   },
-  // 31 — Agradecimento
+  // 29 — Agradecimento
   {
-    id: 31,
+    id: 29,
     render: () => (
       <div className="slide-content flex flex-col items-center justify-center text-center px-[200px]">
         <div className="slide-statement mb-12" style={{ maxWidth: 1400, fontSize: 42, color: "#444" }}>
