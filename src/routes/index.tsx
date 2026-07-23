@@ -10,6 +10,7 @@ import contextoImg from "@/assets/ch-contexto.png";
 import acaoImg from "@/assets/ch-acao.png";
 import custosImg from "@/assets/custos.png";
 import tokenVisualImg from "@/assets/token-visual.png";
+import projImg from "@/assets/proj.png";
 
 const CHAPTER_IMAGES: Record<string, string> = {
   "CÉREBRO": cerebroImg,
@@ -433,10 +434,14 @@ const SLIDES: Slide[] = [
       <SlideShell chapter="CONHECIMENTO">
         <Label>Memória de trabalho</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
-          <Underline>Projetos</Underline> no ChatGPT.
+          Vantagem dos <Underline>projetos</Underline>
         </div>
-        <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Um agrupador de instruções fixas, arquivos e histórico próprios.
+        <div className="flex items-center justify-center flex-1" style={{ marginTop: 20 }}>
+          <img
+            src={projImg}
+            alt="Projetos no ChatGPT"
+            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", borderRadius: 12 }}
+          />
         </div>
       </SlideShell>
     ),
@@ -448,17 +453,50 @@ const SLIDES: Slide[] = [
       <SlideShell chapter="CONHECIMENTO">
         <Label>Base de fontes confiáveis</Label>
         <div className="slide-title mb-10" style={{ maxWidth: 1500 }}>
-          PDFs e vídeos no <Underline>NotebookLM</Underline>.
+          Por que usar?
         </div>
-        <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
-          Suba manuais, atas, resoluções do Bacen e vídeos do YouTube. A IA responde citando exatamente o trecho de origem.
+        <div className="grid gap-8 mt-10" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <Card 
+            title="Respostas específicas" 
+            body="Respostas extraídas <strong>exclusivamente dos seus arquivos</strong> (PDFs, Google Docs, Links, Youtube)." 
+          />
+          <Card 
+            title="Resumos Instantâneos" 
+            body="Criação automática de <strong>guias de estudo</strong>, FAQs, <strong>cronogramas e briefing</strong> de documentos extensos." 
+          />
+          <Card 
+            title="Resumo em áudio" 
+            body="Transforma seus textos em um <strong>podcast interativo</strong> gravado por dois apresentadores virtuais." 
+          />
         </div>
       </SlideShell>
     ),
   },
-  // 16 — Encerramento Dia 1 & Spoiler Dia 2
+  // 16 — Aplicações no Dia a Dia
   {
     id: 16,
+    render: () => (
+      <SlideShell chapter="CONHECIMENTO">
+        <Label>Na Prática</Label>
+        <div className="slide-title mb-20" style={{ maxWidth: 1500 }}>
+          <Underline>Aplicações</Underline> no Dia a Dia.
+        </div>
+        <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <Card 
+            title="Estudantes e Pesquisadores" 
+            body="Sintetize dezenas de artigos científicos, crie resumos para provas e encontre citações exatas em segundos." 
+          />
+          <Card 
+            title="Profissionais e Gestores" 
+            body="Analise relatórios de mercado, atas de reunião e contratos sem perder tempo lendo centenas de páginas." 
+          />
+        </div>
+      </SlideShell>
+    ),
+  },
+  // 17 — Encerramento Dia 1 & Spoiler Dia 2
+  {
+    id: 17,
     render: () => (
       <SlideShell>
         <div className="slide-hero mb-10" style={{ fontSize: 100, lineHeight: 1 }}>
