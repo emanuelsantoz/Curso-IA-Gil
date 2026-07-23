@@ -194,6 +194,114 @@ function StepRevealContent({ stepIndex, children }: { stepIndex: number; childre
   return <div className="contents">{children}</div>;
 }
 
+function Slide5() {
+  return (
+    <SlideShell chapter="CÉREBRO">
+      <Label>Como chegamos até aqui</Label>
+      <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
+        A <Underline>evolução</Underline> da IA.
+      </div>
+      <div className="relative" style={{ marginTop: 30 }}>
+        <div style={{ height: 4, background: "#111", position: "absolute", top: 40, left: 0, right: 0 }} />
+        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+          {[
+            { y: "Antiguidade", t: "O mito de Talos", d: "Origem do desejo de criar vida artificial.", img: "/imagem/imagem_1slide1.png" },
+            { y: "1936–1950", t: "A era de Turing", d: "Máquina de Turing e o teste de Turing.", img: "/imagem/imagem_2slide1.jpg" },
+            { y: "1956", t: "IA no campo acadêmico", d: "Dartmouth formaliza o termo IA.", img: "/imagem/imagem_3slide1.png" },
+            { y: "1966", t: "Eliza", d: "Primeiro chatbot da história (psicóloga).", img: "/imagem/imagem_4slide1.jpg" },
+          ].map((step, i) => (
+            <RevealIf key={step.y} stepIndex={i + 1}>
+              <div className="flex flex-col items-start" style={{ paddingTop: 20 }}>
+                <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ff6b00', marginBottom: 30 }} />
+                <div className="slide-label" style={{ color: "#111" }}>{step.y}</div>
+                <div style={{ fontSize: 30, fontWeight: 600, marginTop: 12, lineHeight: 1.2 }}>{step.t}</div>
+                <div className="slide-body" style={{ color: "#444", marginTop: 8 }}>{step.d}</div>
+                {step.img && (
+                  <img src={step.img} alt={step.t} style={{ width: "100%", height: 200, objectFit: "cover", border: "2px solid #111", borderRadius: 8, background: "#fff", marginTop: 20 }} />
+                )}
+              </div>
+            </RevealIf>
+          ))}
+        </div>
+      </div>
+    </SlideShell>
+  );
+}
+
+function Slide6() {
+  return (
+    <SlideShell chapter="CÉREBRO">
+      <Label>Como chegamos até aqui</Label>
+      <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
+        A <Underline>evolução</Underline> da IA.
+      </div>
+      <div className="relative" style={{ marginTop: 30 }}>
+        <div style={{ height: 4, background: "#111", position: "absolute", top: 40, left: 0, right: 0 }} />
+        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+          {[
+            { y: "1977–1997", t: "IA nos games", d: "Pac-Man e Deep Blue vencendo Kasparov.", imgs: ["/imagem/imagem_1_1slide2.png", "/imagem/imagem_1_2slide2.png"] },
+            { y: "Anos 80–2000", t: "Consolidação do ML", d: "SVMs, árvores de decisão e redes neurais.", imgs: ["/imagem/imagem_2slide2.png.png"] },
+            { y: "2012 → hoje", t: "Era do deep learning", d: "AlexNet marca o início do boom das redes.", imgs: ["/imagem/imagem_3slide2.png.png"] },
+            { y: "2022", t: "Lançamento das LLMs", d: "ChatGPT, Midjourney e os transformers.", imgs: [] },
+          ].map((step, i) => (
+            <RevealIf key={step.y} stepIndex={i + 1}>
+              <div className="flex flex-col items-start" style={{ paddingTop: 20 }}>
+                <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ff6b00', marginBottom: 30 }} />
+                <div className="slide-label" style={{ color: "#111" }}>{step.y}</div>
+                <div style={{ fontSize: 30, fontWeight: 600, marginTop: 12, lineHeight: 1.2 }}>{step.t}</div>
+                <div className="slide-body" style={{ color: "#444", marginTop: 8 }}>{step.d}</div>
+                {step.imgs.length > 0 && (
+                  <div className="flex flex-col gap-4 mt-5 w-full">
+                    {step.imgs.map((src, idx) => (
+                      <img key={idx} src={src} alt={step.t} style={{ width: "100%", height: 160, objectFit: "cover", border: "2px solid #111", borderRadius: 8, background: "#fff" }} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </RevealIf>
+          ))}
+        </div>
+      </div>
+    </SlideShell>
+  );
+}
+
+function Slide7() {
+  return (
+    <SlideShell chapter="CÉREBRO">
+      <Label>Como chegamos até aqui</Label>
+      <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
+        A <Underline>evolução</Underline> da IA.
+      </div>
+      <div className="relative" style={{ marginTop: 30 }}>
+        <div style={{ height: 4, background: "#111", position: "absolute", top: 40, left: 0, right: 0 }} />
+        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+          {[
+            { y: "2023", t: "Multimodalidade", d: "Interpretação de imagem, áudio e texto juntos." },
+            { y: "2024", t: "Vídeo e tempo real", d: "Geração de vídeo realista baseada em física." },
+            { y: "2024–2025", t: "Raciocínio avançado", d: "Modelos aprendem a pensar e se autocorrigir." },
+            { y: "2026", t: "Agentes autônomos", d: "IAs passam a executar tarefas complexas sozinhas." },
+          ].map((step, i) => (
+            <RevealIf key={step.y} stepIndex={i + 1}>
+              <div className="flex flex-col items-start" style={{ paddingTop: 20 }}>
+                <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ff6b00', marginBottom: 30 }} />
+                <div className="slide-label" style={{ color: "#111" }}>{step.y}</div>
+                <div style={{ fontSize: 30, fontWeight: 600, marginTop: 12, lineHeight: 1.2 }}>{step.t}</div>
+                <div className="slide-body" style={{ color: "#444", marginTop: 8 }}>{step.d}</div>
+              </div>
+            </RevealIf>
+          ))}
+        </div>
+      </div>
+      <RevealIf stepIndex={1}>
+        <div style={{ marginTop: 50, display: "grid", gap: 20, gridTemplateColumns: "1fr" }}>
+          <img src="/imagem/imagem_full_slide3.png.png" alt="Evolução da IA 2023–2026" style={{ width: "100%", height: "auto", border: "2px solid #111", borderRadius: 8, background: "#fff" }} />
+        </div>
+      </RevealIf>
+    </SlideShell>
+  );
+}
+
 const SLIDES: Slide[] = [
   // 1 — Cover
   {
@@ -271,100 +379,19 @@ const SLIDES: Slide[] = [
   {
     id: 5,
     steps: 4,
-    render: () => (
-      <SlideShell chapter="CÉREBRO">
-        <Label>Como chegamos até aqui</Label>
-        <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
-          A <Underline>evolução</Underline> da IA.
-        </div>
-        <div className="relative" style={{ marginTop: 30 }}>
-          <div style={{ height: 4, background: "#111", position: "absolute", top: 40, left: 0, right: 0 }} />
-          <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-            {[
-              { y: "Antiguidade", t: "O mito de Talos", d: "Origem do desejo de criar vida artificial." },
-              { y: "1936–1950", t: "A era de Turing", d: "Máquina de Turing e o teste de Turing." },
-              { y: "1956", t: "IA no campo acadêmico", d: "Dartmouth formaliza o termo IA." },
-              { y: "1966", t: "Eliza", d: "Primeiro chatbot da história (psicóloga)." },
-            ].map((step, i) => (
-              <RevealIf key={step.y} stepIndex={i + 1}>
-                <div className="flex flex-col items-start" style={{ paddingTop: 20 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ff6b00', marginBottom: 30 }} />
-                  <div className="slide-label" style={{ color: "#111" }}>{step.y}</div>
-                  <div style={{ fontSize: 30, fontWeight: 600, marginTop: 12, lineHeight: 1.2 }}>{step.t}</div>
-                  <div className="slide-body" style={{ color: "#444", marginTop: 8 }}>{step.d}</div>
-                </div>
-              </RevealIf>
-            ))}
-          </div>
-        </div>
-      </SlideShell>
-    ),
+    render: () => <Slide5 />,
   },
   // 5.2 — Evolução timeline (Parte 2)
   {
     id: 6,
     steps: 4,
-    render: () => (
-      <SlideShell chapter="CÉREBRO">
-        <Label>Como chegamos até aqui</Label>
-        <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
-          A <Underline>evolução</Underline> da IA.
-        </div>
-        <div className="relative" style={{ marginTop: 30 }}>
-          <div style={{ height: 4, background: "#111", position: "absolute", top: 40, left: 0, right: 0 }} />
-          <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-            {[
-              { y: "1977–1997", t: "IA nos games", d: "Pac-Man e Deep Blue vencendo Kasparov." },
-              { y: "Anos 80–2000", t: "Consolidação do ML", d: "SVMs, árvores de decisão e redes neurais." },
-              { y: "2012 → hoje", t: "Era do deep learning", d: "AlexNet marca o início do boom das redes." },
-              { y: "2022", t: "Lançamento das LLMs", d: "ChatGPT, Midjourney e os transformers." },
-            ].map((step, i) => (
-              <RevealIf key={step.y} stepIndex={i + 1}>
-                <div className="flex flex-col items-start" style={{ paddingTop: 20 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ff6b00', marginBottom: 30 }} />
-                  <div className="slide-label" style={{ color: "#111" }}>{step.y}</div>
-                  <div style={{ fontSize: 30, fontWeight: 600, marginTop: 12, lineHeight: 1.2 }}>{step.t}</div>
-                  <div className="slide-body" style={{ color: "#444", marginTop: 8 }}>{step.d}</div>
-                </div>
-              </RevealIf>
-            ))}
-          </div>
-        </div>
-      </SlideShell>
-    ),
+    render: () => <Slide6 />,
   },
   // 5.3 — Evolução timeline (Parte 3)
   {
     id: 7,
     steps: 4,
-    render: () => (
-      <SlideShell chapter="CÉREBRO">
-        <Label>Como chegamos até aqui</Label>
-        <div className="slide-title mb-14" style={{ maxWidth: 1500 }}>
-          A <Underline>evolução</Underline> da IA.
-        </div>
-        <div className="relative" style={{ marginTop: 30 }}>
-          <div style={{ height: 4, background: "#111", position: "absolute", top: 40, left: 0, right: 0 }} />
-          <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-            {[
-              { y: "2023", t: "Multimodalidade", d: "Interpretação de imagem, áudio e texto juntos." },
-              { y: "2024", t: "Vídeo e tempo real", d: "Geração de vídeo realista baseada em física." },
-              { y: "2024–2025", t: "Raciocínio avançado", d: "Modelos aprendem a pensar e se autocorrigir." },
-              { y: "2026", t: "Agentes autônomos", d: "IAs passam a executar tarefas complexas sozinhas." },
-            ].map((step, i) => (
-              <RevealIf key={step.y} stepIndex={i + 1}>
-                <div className="flex flex-col items-start" style={{ paddingTop: 20 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ff6b00', marginBottom: 30 }} />
-                  <div className="slide-label" style={{ color: "#111" }}>{step.y}</div>
-                  <div style={{ fontSize: 30, fontWeight: 600, marginTop: 12, lineHeight: 1.2 }}>{step.t}</div>
-                  <div className="slide-body" style={{ color: "#444", marginTop: 8 }}>{step.d}</div>
-                </div>
-              </RevealIf>
-            ))}
-          </div>
-        </div>
-      </SlideShell>
-    ),
+    render: () => <Slide7 />,
   },
   // 6.1 — LLMs
   {
@@ -1686,7 +1713,9 @@ function Presentation() {
       <div ref={stageRef} className="relative flex-1 overflow-hidden">
         <div className="slide-wrapper" style={{ transform: `scale(${scale})` }}>
           <StepContext.Provider value={step}>
-            {slide.render()}
+            <div key={index} style={{ display: "contents" }}>
+              {slide.render()}
+            </div>
           </StepContext.Provider>
         </div>
       </div>
