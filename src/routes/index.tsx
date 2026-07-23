@@ -1078,8 +1078,23 @@ const SLIDES: Slide[] = [
             }}
           >
             <strong>Nota arquitetural:</strong> o mesmo LLM, envolto em um Harness diferente, produzirá resultados comportamentais completamente distintos.
-          </div>
-        </RevealIf>
+        </div>
+      </RevealIf>
+      </SlideShell>
+    ),
+  },
+  // 7.0 — Vamos testa-los? (transição)
+  {
+    id: 20,
+    render: () => (
+      <SlideShell chapter="CÉREBRO" align="center">
+        <Label>Hora de testar</Label>
+        <div className="slide-hero" style={{ maxWidth: 1600 }}>
+          Vamos <Underline>testa-los</Underline>?
+        </div>
+        <div className="slide-statement" style={{ maxWidth: 1500, color: "#333" }}>
+          <br />Dinâmica · comparação de modelos
+        </div>
       </SlideShell>
     ),
   },
